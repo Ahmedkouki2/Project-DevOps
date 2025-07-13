@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.admin{
+  background-color: #f9f9f9;
+}
+
+.header{
+  display: flex;
+}
+
+.header h1{
+  position: relative;
+  left: 43%;
+  margin-top: 30px;
+  font-family: times new roman;
+  font-size: 30px;
+  font-weight:800;
+  color:rgb(128, 65, 173)
+}
+
+
+.header img{
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  background-color: #f9f9f9;
+}
+
+.button a{
+  text-decoration: none;
+  color: white;
+}
+
+.button{
+  position: relative;
+  left: 50%;
+  top: 120px;
+}
+
+.body{
+  position: relative;
+  top: 70px;
+  background-color: #f9f9f9;
+}

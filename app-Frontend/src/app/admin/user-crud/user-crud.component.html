@@ -1,0 +1,44 @@
+<form class="example-form" #userForm="ngForm" (ngSubmit)="saveUser(userForm.value)">
+  <mat-card>
+    <mat-card-content>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput name="id" #id="ngModel" type="number" ngModel readonly>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input matInput placeholder="Name" type="text" name="name" #name="ngModel" required ngModel>
+        <mat-error *ngIf="name.errors?.['required']">Nom d'utilisateur est obligatoire</mat-error>
+      </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" type="email" name="email" #email="ngModel" ngModel required email>
+      <mat-error *ngIf="email.errors?.['required']">Email est obligatoire</mat-error>
+      <mat-error *ngIf="email.errors?.['email']">Email est invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput placeholder="Password" type="text" name="password" #password="ngModel" required ngModel>
+      <mat-error *ngIf="password.errors?.['required']">Mot de passe est obligatoire</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Role</mat-label>
+      <input matInput placeholder="Role" type="text" name="role" #role="ngModel" required ngModel>
+      <mat-error *ngIf="role.errors?.['required']">Role est obligatoire</mat-error>
+    </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+      <div class="example-button-row" style="margin: 15px">
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.form.invalid">Sauvegarder</button>
+        | <a (click)="closePopup()" mat-raised-button color="accent">Fermer</a>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</form>

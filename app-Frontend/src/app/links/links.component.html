@@ -1,0 +1,14 @@
+<div class="container">
+  <h2><mat-icon>list_alt</mat-icon> Liens</h2>
+    <mat-nav-list >
+    <mat-list-item *ngFor="let link of links">
+      <mat-icon>rss_feed</mat-icon>
+      <a matListItemTitle [href]=link.path target="_blank">{{link.title }}</a>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
+
+
+
+
+
