@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/appBackend-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose port (change if your app uses a different port)
-EXPOSE 8080
+EXPOSE 5200
 
 # Run the jar
 ENTRYPOINT ["java", "-jar", "app.jar"]

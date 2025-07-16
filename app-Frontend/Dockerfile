@@ -1,28 +1,32 @@
-# Stage 1: Build the Angular app
+# Stage 1: Build Angular app
+
 FROM node:18-alpine AS build
 
 WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
+
 RUN npm install
 
-# Copy the rest of the app's source code and build it
 COPY . .
-RUN npm run build --prod
 
-# Stage 2: Serve with NGINX
-FROM nginx:alpine
+RUN npm run build --configuration=production
 
-# Remove default nginx static assets
-RUN rm -rf /usr/share/nginx/html/*
+# Stage 2: Serve the app with http-server
 
-# Copy built app from previous stage
-COPY --from=build /app/dist/your-app-name /usr/share/nginx/html
+FROM node:18-alpine
 
-# Copy custom nginx config (optional)
-# COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /app
 
-EXPOSE 80
+# Install http-server globally
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install -g http-server
+
+# Copy the built app from the previous stage
+
+COPY --from=build /app/dist/app-frontend /app/dist
+
+EXPOSE 4200
+
+CMD ["http-server", "/app/dist", "-p", "8080", "-c-1"]
+
