@@ -20,4 +20,4 @@ COPY --from=build /app/dist/app-frontend /app/dist
 
 EXPOSE 4200
 
-CMD ["http-server", "/app/dist", "-p", "8080", "-c-1", "-s"]
+CMD ["http-server", "/app/dist", "-p", "4200", "-c-1", "-s"]
